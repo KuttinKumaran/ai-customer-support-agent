@@ -1,0 +1,41 @@
+# =============================================================================
+# Docker Compose — Local development & demo (all mocks enabled)
+# Usage: docker compose up --build
+# =============================================================================
+
+services:
+  ai-support-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ai-customer-support-agent:latest
+    container_name: ai-customer-support-agent
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      PORT: 3000
+      NODE_ENV: development
+      MOCK_AZURE: "true"
+      MOCK_OMS: "true"
+      MOCK_COURIER: "true"
+      RETRY_MAX_ATTEMPTS: 3
+      RETRY_DELAY_MS: 1000
+    volumes:
+      # Persist application logs on the host
+      - app-logs:/app/src/logs
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+
+volumes:
+  app-logs:

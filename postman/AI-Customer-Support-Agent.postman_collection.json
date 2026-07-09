@@ -1,0 +1,210 @@
+{
+  "info": {
+    "name": "AI Customer Support Agent",
+    "description": "Samsung D2C AI Customer Support API — Docker local: http://localhost:3000",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health & Docs",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/health"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Support API",
+      "item": [
+        {
+          "name": "Submit Support Request — ORD1001 (Coupon)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"Kumaran\",\n  \"customerMessage\": \"My Samsung TV order hasn't arrived. Please help me.\",\n  \"orderId\": \"ORD1001\"\n}"
+            },
+            "url": "{{baseUrl}}/api/support"
+          }
+        },
+        {
+          "name": "Submit Support Request — ORD1002 (Delivered)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"Priya\",\n  \"customerMessage\": \"I want to check my order status.\",\n  \"orderId\": \"ORD1002\"\n}"
+            },
+            "url": "{{baseUrl}}/api/support"
+          }
+        },
+        {
+          "name": "Submit Support Request — ORD1003 (Refund)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"Rahul\",\n  \"customerMessage\": \"My refrigerator order is very delayed. I need help.\",\n  \"orderId\": \"ORD1003\"\n}"
+            },
+            "url": "{{baseUrl}}/api/support"
+          }
+        },
+        {
+          "name": "Submit Support Request — Validation Error",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"Kumaran\"\n}"
+            },
+            "url": "{{baseUrl}}/api/support"
+          }
+        },
+        {
+          "name": "Submit Support Request — Order Not Found",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"Test\",\n  \"customerMessage\": \"Where is my order?\",\n  \"orderId\": \"ORD9999\"\n}"
+            },
+            "url": "{{baseUrl}}/api/support"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mock OMS",
+      "item": [
+        {
+          "name": "List All Orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/mock/oms/orders"
+          }
+        },
+        {
+          "name": "Get Order by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/mock/oms/orders/ORD1001"
+          }
+        },
+        {
+          "name": "Reset OMS Data",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/mock/oms/reset"
+          }
+        },
+        {
+          "name": "Add/Update Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"ORD1004\",\n  \"customerName\": \"Anita\",\n  \"product\": \"Samsung Galaxy Watch\",\n  \"orderDateOffsetDays\": -3,\n  \"status\": \"SHIPPED\",\n  \"amount\": 24999,\n  \"trackingId\": \"TRK9004\"\n}"
+            },
+            "url": "{{baseUrl}}/api/mock/oms/orders"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mock Courier",
+      "item": [
+        {
+          "name": "List All Shipments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/mock/courier/shipments"
+          }
+        },
+        {
+          "name": "Get Shipment by Tracking ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/mock/courier/shipments/TRK9001"
+          }
+        },
+        {
+          "name": "Reset Courier Data",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/mock/courier/reset"
+          }
+        },
+        {
+          "name": "Add/Update Shipment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trackingId\": \"TRK9004\",\n  \"orderId\": \"ORD1004\",\n  \"status\": \"IN_TRANSIT\",\n  \"expectedDeliveryOffsetDays\": -2,\n  \"currentLocation\": \"Bangalore Hub\",\n  \"carrier\": \"Delhivery\"\n}"
+            },
+            "url": "{{baseUrl}}/api/mock/courier/shipments"
+          }
+        }
+      ]
+    }
+  ]
+}

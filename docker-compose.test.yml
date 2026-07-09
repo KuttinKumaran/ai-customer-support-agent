@@ -1,0 +1,16 @@
+# =============================================================================
+# Docker Compose — Run Jest tests inside a container
+# Usage: docker compose -f docker-compose.test.yml run --rm test
+# =============================================================================
+
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - ./tests:/app/tests:ro
+      - ./src:/app/src:ro
+      - ./data:/app/data:ro
+      - ./mock-servers:/app/mock-servers:ro
+      - ./jest.config.js:/app/jest.config.js:ro

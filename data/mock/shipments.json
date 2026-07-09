@@ -1,0 +1,26 @@
+[
+  {
+    "trackingId": "TRK9001",
+    "orderId": "ORD1001",
+    "status": "IN_TRANSIT",
+    "expectedDeliveryOffsetDays": -4,
+    "currentLocation": "Mumbai Distribution Hub",
+    "carrier": "BlueDart"
+  },
+  {
+    "trackingId": "TRK9002",
+    "orderId": "ORD1002",
+    "status": "DELIVERED",
+    "expectedDeliveryOffsetDays": -2,
+    "currentLocation": "Delivered - Chennai",
+    "carrier": "Delhivery"
+  },
+  {
+    "trackingId": "TRK9003",
+    "orderId": "ORD1003",
+    "status": "IN_TRANSIT",
+    "expectedDeliveryOffsetDays": -8,
+    "currentLocation": "Delhi Hub",
+    "carrier": "BlueDart"
+  }
+]

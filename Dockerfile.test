@@ -1,0 +1,19 @@
+# Test image — includes devDependencies for Jest
+# tests/ and jest.config.js are mounted via docker-compose.test.yml
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package.json ./
+RUN npm install && npm cache clean --force
+
+COPY src ./src
+COPY data ./data
+COPY mock-servers ./mock-servers
+
+ENV NODE_ENV=test
+ENV MOCK_AZURE=true
+ENV MOCK_OMS=true
+ENV MOCK_COURIER=true
+
+CMD ["npm", "test"]

@@ -1,0 +1,45 @@
+{
+  "name": "ai-customer-support-agent",
+  "version": "1.0.0",
+  "description": "AI-powered customer support agent for Samsung D2C e-commerce",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "jest --coverage",
+    "index:seed": "node scripts/seed-policies.js",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up --build -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f ai-support-agent",
+    "docker:test": "docker compose -f docker-compose.test.yml run --rm test",
+    "docker:prod": "docker compose -f docker-compose.prod.yml up --build -d"
+  },
+  "keywords": [
+    "ai",
+    "customer-support",
+    "rag",
+    "azure-openai",
+    "samsung"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@azure/openai": "^2.0.0",
+    "@azure/search-documents": "^12.1.0",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "openai": "^4.77.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "uuid": "^11.0.5",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

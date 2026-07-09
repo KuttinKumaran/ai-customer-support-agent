@@ -1,0 +1,29 @@
+[
+  {
+    "orderId": "ORD1001",
+    "customerName": "Kumaran",
+    "product": "Samsung 55\" QLED 4K Smart TV",
+    "orderDateOffsetDays": -10,
+    "status": "SHIPPED",
+    "amount": 64999,
+    "trackingId": "TRK9001"
+  },
+  {
+    "orderId": "ORD1002",
+    "customerName": "Priya",
+    "product": "Samsung Galaxy S25 Ultra",
+    "orderDateOffsetDays": -5,
+    "status": "DELIVERED",
+    "amount": 134999,
+    "trackingId": "TRK9002"
+  },
+  {
+    "orderId": "ORD1003",
+    "customerName": "Rahul",
+    "product": "Samsung 300L Refrigerator",
+    "orderDateOffsetDays": -14,
+    "status": "SHIPPED",
+    "amount": 32999,
+    "trackingId": "TRK9003"
+  }
+]
