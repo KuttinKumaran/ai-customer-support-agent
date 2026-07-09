@@ -2,6 +2,8 @@
 
 Production-ready Enterprise AI application for **Samsung D2C E-Commerce** customer support. Handles order delivery inquiries using Azure OpenAI, RAG-based policy retrieval, OMS integration, courier tracking, and automated compensation rules.
 
+> **Full technical documentation:** [docs/TECHNICAL-DOCUMENTATION.md](docs/TECHNICAL-DOCUMENTATION.md)
+
 ## Architecture
 
 ```
